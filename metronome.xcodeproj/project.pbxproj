@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E23565F147C8A6500D002CE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E23565E147C8A6500D002CE /* SettingsViewController.m */; };
 		7E657C33147B3141003C6876 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E657C32147B3141003C6876 /* UIKit.framework */; };
 		7E657C35147B3141003C6876 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E657C34147B3141003C6876 /* Foundation.framework */; };
 		7E657C37147B3141003C6876 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E657C36147B3141003C6876 /* CoreGraphics.framework */; };
@@ -14,23 +15,28 @@
 		7E657C3F147B3141003C6876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C3E147B3141003C6876 /* main.m */; };
 		7E657C43147B3141003C6876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C42147B3141003C6876 /* AppDelegate.m */; };
 		7E657C46147B3141003C6876 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E657C44147B3141003C6876 /* MainStoryboard.storyboard */; };
-		7E657C49147B3141003C6876 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* ViewController.m */; };
+		7E657C49147B3141003C6876 /* MetronomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* MetronomeController.m */; };
+		7E97CD49147DEC1A00793B96 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E97CD48147DEC1A00793B96 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E23565D147C8A6500D002CE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		7E23565E147C8A6500D002CE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7E657C2E147B3141003C6876 /* metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E657C32147B3141003C6876 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7E657C34147B3141003C6876 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7E657C36147B3141003C6876 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7E657C3A147B3141003C6876 /* metronome-Info.plist */ = {isa = PBXFileReference; path = "metronome-Info.plist"; sourceTree = "<group>"; };
+		7E657C3A147B3141003C6876 /* metronome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "metronome-Info.plist"; sourceTree = "<group>"; };
 		7E657C3C147B3141003C6876 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E657C3E147B3141003C6876 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7E657C40147B3141003C6876 /* metronome-Prefix.pch */ = {isa = PBXFileReference; path = "metronome-Prefix.pch"; sourceTree = "<group>"; };
-		7E657C41147B3141003C6876 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7E657C40147B3141003C6876 /* metronome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "metronome-Prefix.pch"; sourceTree = "<group>"; };
+		7E657C41147B3141003C6876 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E657C42147B3141003C6876 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7E657C45147B3141003C6876 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		7E657C47147B3141003C6876 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		7E657C48147B3141003C6876 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7E657C47147B3141003C6876 /* MetronomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeController.h; sourceTree = "<group>"; };
+		7E657C48147B3141003C6876 /* MetronomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeController.m; sourceTree = "<group>"; };
+		7E97CD47147DEC1A00793B96 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		7E97CD48147DEC1A00793B96 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,7 @@
 		7E657C23147B3141003C6876 = {
 			isa = PBXGroup;
 			children = (
+				7E97CD4A147DEC1E00793B96 /* Model */,
 				7E657C38147B3141003C6876 /* metronome */,
 				7E657C31147B3141003C6876 /* Frameworks */,
 				7E657C2F147B3141003C6876 /* Products */,
@@ -80,8 +87,10 @@
 				7E657C41147B3141003C6876 /* AppDelegate.h */,
 				7E657C42147B3141003C6876 /* AppDelegate.m */,
 				7E657C44147B3141003C6876 /* MainStoryboard.storyboard */,
-				7E657C47147B3141003C6876 /* ViewController.h */,
-				7E657C48147B3141003C6876 /* ViewController.m */,
+				7E657C47147B3141003C6876 /* MetronomeController.h */,
+				7E23565D147C8A6500D002CE /* SettingsViewController.h */,
+				7E23565E147C8A6500D002CE /* SettingsViewController.m */,
+				7E657C48147B3141003C6876 /* MetronomeController.m */,
 				7E657C39147B3141003C6876 /* Supporting Files */,
 			);
 			path = metronome;
@@ -96,6 +105,15 @@
 				7E657C40147B3141003C6876 /* metronome-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E97CD4A147DEC1E00793B96 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E97CD47147DEC1A00793B96 /* Settings.h */,
+				7E97CD48147DEC1A00793B96 /* Settings.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +180,9 @@
 			files = (
 				7E657C3F147B3141003C6876 /* main.m in Sources */,
 				7E657C43147B3141003C6876 /* AppDelegate.m in Sources */,
-				7E657C49147B3141003C6876 /* ViewController.m in Sources */,
+				7E657C49147B3141003C6876 /* MetronomeController.m in Sources */,
+				7E23565F147C8A6500D002CE /* SettingsViewController.m in Sources */,
+				7E97CD49147DEC1A00793B96 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +294,7 @@
 				7E657C4E147B3141003C6876 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
