@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E16ED05147EB4F200738259 /* MetronomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E16ED04147EB4F200738259 /* MetronomeView.m */; };
+		7E16ED08147EC3FC00738259 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E16ED07147EC3FC00738259 /* QuartzCore.framework */; };
 		7E23565F147C8A6500D002CE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E23565E147C8A6500D002CE /* SettingsViewController.m */; };
 		7E657C33147B3141003C6876 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E657C32147B3141003C6876 /* UIKit.framework */; };
 		7E657C35147B3141003C6876 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E657C34147B3141003C6876 /* Foundation.framework */; };
@@ -20,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E16ED03147EB4F200738259 /* MetronomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeView.h; sourceTree = "<group>"; };
+		7E16ED04147EB4F200738259 /* MetronomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeView.m; sourceTree = "<group>"; };
+		7E16ED07147EC3FC00738259 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7E23565D147C8A6500D002CE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7E23565E147C8A6500D002CE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7E657C2E147B3141003C6876 /* metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E16ED08147EC3FC00738259 /* QuartzCore.framework in Frameworks */,
 				7E657C33147B3141003C6876 /* UIKit.framework in Frameworks */,
 				7E657C35147B3141003C6876 /* Foundation.framework in Frameworks */,
 				7E657C37147B3141003C6876 /* CoreGraphics.framework in Frameworks */,
@@ -74,6 +80,7 @@
 		7E657C31147B3141003C6876 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E16ED07147EC3FC00738259 /* QuartzCore.framework */,
 				7E657C32147B3141003C6876 /* UIKit.framework */,
 				7E657C34147B3141003C6876 /* Foundation.framework */,
 				7E657C36147B3141003C6876 /* CoreGraphics.framework */,
@@ -87,6 +94,8 @@
 				7E657C41147B3141003C6876 /* AppDelegate.h */,
 				7E657C42147B3141003C6876 /* AppDelegate.m */,
 				7E657C44147B3141003C6876 /* MainStoryboard.storyboard */,
+				7E16ED03147EB4F200738259 /* MetronomeView.h */,
+				7E16ED04147EB4F200738259 /* MetronomeView.m */,
 				7E657C47147B3141003C6876 /* MetronomeController.h */,
 				7E23565D147C8A6500D002CE /* SettingsViewController.h */,
 				7E23565E147C8A6500D002CE /* SettingsViewController.m */,
@@ -183,6 +192,7 @@
 				7E657C49147B3141003C6876 /* MetronomeController.m in Sources */,
 				7E23565F147C8A6500D002CE /* SettingsViewController.m in Sources */,
 				7E97CD49147DEC1A00793B96 /* Settings.m in Sources */,
+				7E16ED05147EB4F200738259 /* MetronomeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
