@@ -12,13 +12,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    MetronomeController *metronomeController = (MetronomeController *)navigationController.topViewController;
-    
-    
-}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
