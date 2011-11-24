@@ -13,6 +13,7 @@
 
 @interface MetronomeController : UIViewController <SettingsViewControllerDelegate> {
     NSTimer *timer;
+    NSInteger count;
 }
 
 @property (assign) NSTimer *timer;

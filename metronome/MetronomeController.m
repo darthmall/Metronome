@@ -94,14 +94,30 @@
 }
 
 - (void)tick:(NSTimer *)timer {
-    // Toggle the visual bell on clicks.
-    self.bell.hidden = !self.bell.hidden;
+    // Increment the beat counter and wrap if necessary.
+    count++;
+    if (count > [self.current.meter integerValue]) {
+        count = 1;
+    }
+    
+    // Update the visual bell and show it.
+    self.bell.text = [NSString stringWithFormat:@"%d", count];
+    self.bell.hidden = NO;
+    
+    // Schedule a timer to hide the bell.
+    [NSTimer scheduledTimerWithTimeInterval:30.0/[self.current.tempo doubleValue] target:self selector:@selector(tock:) userInfo:nil repeats:NO];
+}
+
+- (void)tock:(NSTimer *)timer {
+    self.bell.hidden = YES;
 }
 
 - (IBAction)playPause:(id)sender
 {
     if (!self.timer) {
-        [self.button setTitle:@"Pause"forState:UIControlStateNormal];
+        count = 1;
+
+        [self.button setTitle:@"Stop"forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:60.0/[self.current.tempo doubleValue] target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     } else {
         [self.button setTitle:@"Start" forState:UIControlStateNormal];
