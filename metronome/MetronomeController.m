@@ -40,6 +40,9 @@
     
     self.tempoLabel.text = [self.current.tempo stringValue];
     self.meterLabel.text = [self.current.meter stringValue];
+    
+    longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stop:)];
+    [self.view addGestureRecognizer:longPressGesture];
 }
 
 - (void)viewDidUnload
@@ -88,9 +91,7 @@
         controller.delegate = self;
         
         // Stop the metronome if it's running.
-        if (self.timer) {
-            [self.button setTitle:@"Start" forState:UIControlStateNormal];
-            
+        if (self.timer) {            
             self.bell.hidden = YES;
             
             [self.timer invalidate];
@@ -101,6 +102,16 @@
 
 - (IBAction)handlePanGesture:(UIGestureRecognizer *)sender {
     [self performSegueWithIdentifier:@"ShowConfig" sender:self];
+}
+
+- (IBAction)stop:(UIGestureRecognizer *)sender {
+    if (self.timer) {
+        self.bell.hidden = YES;
+        self.button.hidden = NO;
+        
+        [self.timer invalidate];
+        [self setTimer:nil];
+    }
 }
 
 - (void)tick:(NSTimer *)timer {
@@ -128,23 +139,14 @@
         // Initialize the timer and the visual bell.
         count = 1;
         self.bell.text = @"1";
+        self.button.hidden = YES;
         self.bell.hidden = NO;
-        
-        // Change the button text.
-        [self.button setTitle:@"Stop"forState:UIControlStateNormal];
-        
+                
         // Start the repeating timer that counts the beats.
         self.timer = [NSTimer scheduledTimerWithTimeInterval:60.0/[self.current.tempo doubleValue] target:self selector:@selector(tick:) userInfo:nil repeats:YES];
         
         // Start the timer to hide the counter on the up beats
         [NSTimer scheduledTimerWithTimeInterval:30.0/[self.current.tempo doubleValue] target:self selector:@selector(tock:) userInfo:nil repeats:NO];
-    } else {
-        [self.button setTitle:@"Start" forState:UIControlStateNormal];
-        
-        self.bell.hidden = YES;
-        
-        [self.timer invalidate];
-        [self setTimer:nil];
     }
 }
 

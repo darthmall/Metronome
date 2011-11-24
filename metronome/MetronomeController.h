@@ -14,6 +14,7 @@
 @interface MetronomeController : UIViewController <SettingsViewControllerDelegate> {
     NSTimer *timer;
     NSInteger count;
+    UILongPressGestureRecognizer *longPressGesture;
 }
 
 @property (assign) NSTimer *timer;
