@@ -14,8 +14,6 @@
 @synthesize timer=_timer;
 @synthesize current=_current;
 
-@synthesize theView;
-
 @synthesize button;
 @synthesize meterLabel;
 @synthesize tempoLabel;
@@ -44,9 +42,11 @@
     longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stop:)];
     [self.view addGestureRecognizer:longPressGesture];
     
-    display = [[MetronomeView alloc] initWithFrame:CGRectMake(80, 0, 160, 160)];
+    display = [[MetronomeView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160)];
     display.hidden = YES;
-    [self.theView addSubview:display];
+    display.beats = self.current.meter;
+
+    [self.view addSubview:display];
 }
 
 - (void)viewDidUnload
@@ -55,10 +55,7 @@
     [self setMeterLabel:nil];
     [self setTimer:nil];
     [self setButton:nil];
-    [self setTheView:nil];
     [self setView:nil];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,7 +93,8 @@
         // Stop the metronome if it's running.
         if (self.timer) {            
             display.hidden = YES;
-            
+            self.button.hidden = NO;
+            [display reset];
             [self.timer invalidate];
             [self setTimer:nil];
         }
@@ -111,7 +109,7 @@
     if (self.timer) {
         display.hidden = YES;
         self.button.hidden = NO;
-        
+        [display reset];
         [self.timer invalidate];
         [self setTimer:nil];
     }
@@ -119,40 +117,21 @@
 
 - (void)tick:(NSTimer *)timer {
     // Increment the beat counter and wrap if necessary.
-    count++;
-    if (count > [self.current.meter integerValue]) {
-        count = 1;
-    }
-    
-    // Update the visual bell and show it.
-    display.alpha = 1.0;
-    display.hidden = NO;
-    
-//    // Schedule a timer to hide the bell.
-    [UIView animateWithDuration:0.8*(60.0/[self.current.tempo doubleValue]) animations:^{
-        display.alpha = 0.0;
-    }];
-}
-
-- (void)tock:(NSTimer *)timer {
-    display.hidden = YES;
+    [display tick:[NSNumber numberWithDouble:60.0 / [self.current.tempo doubleValue] * ([self.current.meter doubleValue] - 1.0)]];
 }
 
 - (IBAction)playPause:(id)sender
 {
     if (!self.timer) {
+        double interval = 60.0 / [self.current.tempo doubleValue];
         // Initialize the timer and the visual bell.
-        count = 1;
+
         self.button.hidden = YES;
         display.hidden = NO;
                 
         // Start the repeating timer that counts the beats.
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:60.0/[self.current.tempo doubleValue] target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-        
-        // Start the timer to hide the counter on the up beats
-        [UIView animateWithDuration:0.8*(60.0/[self.current.tempo doubleValue]) animations:^{
-            display.alpha = 0.0;
-        }];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+        [display tick:[NSNumber numberWithDouble:interval * ([self.current.meter doubleValue] - 1.0)]];
     }
 }
 
@@ -160,7 +139,8 @@
     self.current = settings;
     self.tempoLabel.text = [self.current.tempo stringValue];
     self.meterLabel.text = [self.current.meter stringValue];
-    
+    display.beats = settings.meter;
+
     [[self navigationController] popViewControllerAnimated:YES];
 }
 

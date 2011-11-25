@@ -76,15 +76,9 @@
                         <outlet property="button" destination="Hjr-cO-ZEC" id="w2Y-rC-o1D"/>
                         <outlet property="meterLabel" destination="N1f-Cf-vDz" id="Zn0-wj-xBn"/>
                         <outlet property="tempoLabel" destination="Eyq-jp-UvC" id="pYj-Xk-ove"/>
-                        <outlet property="theView" destination="3" id="Pma-iC-LJK"/>
                         <outlet property="view" destination="3" id="cg9-el-2GI"/>
                     </connections>
                 </viewController>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jyY-HX-F8d">
-                    <connections>
-                        <action selector="playPause:" destination="2" id="kaT-JO-jNt"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="207" y="308"/>
         </scene>
@@ -192,11 +186,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MetronomeController.h"/>
             <relationships>
                 <relationship kind="action" name="playPause:"/>
-                <relationship kind="outlet" name="bell" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="meterLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tempoLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="theView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="SettingsViewController" superclassName="UITableViewController">

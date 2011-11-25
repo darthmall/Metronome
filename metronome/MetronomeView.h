@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MetronomeView : UIView
+@interface MetronomeView : UIView {
+    NSArray *ticks;
+    NSInteger count;
+}
+
+@property (assign, nonatomic) NSNumber *beats;
+
+- (void)tick:(NSNumber *)duration;
+- (void)reset;
 
 @end

@@ -11,28 +11,79 @@
 
 #define   DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees)/ 180)
 
+CALayer* makeLayer(CGRect frame) {
+    CGFloat comps[] = {0.5, 1.0};
+    
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = frame;
+    layer.opaque = YES;
+    layer.cornerRadius = frame.size.height / 2;
+    layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceGray(), comps);
+    layer.opacity = 0.0;
+//    layer.anchorPoint = CGPointMake(0.0, 0.0);
+    return layer;
+    
+}
+
 @implementation MetronomeView
+
+@synthesize beats=_beats;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
         self.opaque = NO;
+        count = 0;
     }
     
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-    CGFloat w = rect.size.width;
-    CGFloat h = rect.size.height;
-    CGFloat r = MIN(w, h) / 2.0;
-            
-    UIBezierPath *circle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(w / 2, h / 2) radius:r startAngle:0 endAngle:DEGREES_TO_RADIANS(360) clockwise:YES];
-    [[UIColor redColor] setFill];
+- (void)setBeats:(NSNumber *)beats {
+    float gutter = self.frame.size.width / (3 * [beats floatValue] + 1);
+    float y = self.frame.size.height / 2 - gutter;
 
-    [circle fill];
+    CALayer *tickArray[[beats intValue]];
+    
+    for (int i = 0; i < [ticks count]; i++) {
+        [[ticks objectAtIndex:i] removeFromSuperlayer];
+    }
+
+    for (int i = 0; i < [beats intValue]; i++) {
+        CGRect bounds = CGRectMake(i * 3 * gutter + gutter, y, 2 * gutter, 2 * gutter);
+
+        CALayer *layer = makeLayer(bounds);
+        [self.layer addSublayer:layer];
+        tickArray[i] = layer;
+    }
+    
+    ticks = [NSArray arrayWithObjects:tickArray count:[beats unsignedIntValue]];    
+    _beats = beats;
 }
 
+- (void)tick:(NSNumber *)duration {
+    CALayer *layer = [ticks objectAtIndex:count];
+    layer.opacity = 1.0;
+    
+    CABasicAnimation *hide = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    hide.duration = [duration doubleValue];
+    hide.fromValue = [NSNumber numberWithFloat:1.0];
+    hide.toValue = [NSNumber numberWithFloat:0.0];
+    [layer addAnimation:hide forKey:@"animateOpacity"];
+    
+    count++;
+    if (count >= [_beats intValue]) {
+        count = 0;
+    }
+}
 
+- (void)reset {
+    count = 0;
+    
+    for (int i = 0; i < [ticks count]; i++) {
+        CALayer *l = [ticks objectAtIndex:i];
+        l.opacity = 0.0;
+    }
+}
 @end

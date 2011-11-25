@@ -14,7 +14,6 @@
 
 @interface MetronomeController : UIViewController <SettingsViewControllerDelegate> {
     NSTimer *timer;
-    NSInteger count;
     UILongPressGestureRecognizer *longPressGesture;
     MetronomeView *display;
 }
@@ -22,7 +21,6 @@
 @property (assign) NSTimer *timer;
 @property (strong, nonatomic) Settings *current;
 
-@property (weak, nonatomic) IBOutlet UIView *theView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UILabel *meterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
