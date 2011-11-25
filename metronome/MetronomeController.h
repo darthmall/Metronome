@@ -26,6 +26,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
 
 - (IBAction)playPause:(id)sender;
-- (void)tick:(NSTimer *)timer;
 
 @end

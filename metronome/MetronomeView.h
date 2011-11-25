@@ -15,7 +15,7 @@
 
 @property (assign, nonatomic) NSNumber *beats;
 
-- (void)tick:(NSNumber *)duration;
+- (void)tick:(NSTimer *)timer;
 - (void)reset;
 
 @end

@@ -115,11 +115,6 @@
     }
 }
 
-- (void)tick:(NSTimer *)timer {
-    // Increment the beat counter and wrap if necessary.
-    [display tick:[NSNumber numberWithDouble:60.0 / [self.current.tempo doubleValue] * ([self.current.meter doubleValue] - 1.0)]];
-}
-
 - (IBAction)playPause:(id)sender
 {
     if (!self.timer) {
@@ -130,8 +125,7 @@
         display.hidden = NO;
                 
         // Start the repeating timer that counts the beats.
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-        [display tick:[NSNumber numberWithDouble:interval * ([self.current.meter doubleValue] - 1.0)]];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:display selector:@selector(tick:) userInfo:[NSNumber numberWithDouble:interval * ([self.current.meter doubleValue] - 1.0)] repeats:YES];
     }
 }
 

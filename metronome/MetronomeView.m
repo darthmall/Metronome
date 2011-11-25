@@ -62,12 +62,12 @@ CALayer* makeLayer(CGRect frame) {
     _beats = beats;
 }
 
-- (void)tick:(NSNumber *)duration {
+- (void)tick:(NSTimer *)timer {
     CALayer *layer = [ticks objectAtIndex:count];
     layer.opacity = 1.0;
     
     CABasicAnimation *hide = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    hide.duration = [duration doubleValue];
+    hide.duration = [timer.userInfo doubleValue];
     hide.fromValue = [NSNumber numberWithFloat:1.0];
     hide.toValue = [NSNumber numberWithFloat:0.0];
     [layer addAnimation:hide forKey:@"animateOpacity"];
@@ -83,6 +83,7 @@ CALayer* makeLayer(CGRect frame) {
     
     for (int i = 0; i < [ticks count]; i++) {
         CALayer *l = [ticks objectAtIndex:i];
+        [l removeAllAnimations];
         l.opacity = 0.0;
     }
 }
