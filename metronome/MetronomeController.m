@@ -129,7 +129,6 @@
     display.hidden = NO;
     
 //    // Schedule a timer to hide the bell.
-//    [NSTimer scheduledTimerWithTimeInterval:30.0/[self.current.tempo doubleValue] target:self selector:@selector(tock:) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.8*(60.0/[self.current.tempo doubleValue]) animations:^{
         display.alpha = 0.0;
     }];
@@ -151,7 +150,6 @@
         self.timer = [NSTimer scheduledTimerWithTimeInterval:60.0/[self.current.tempo doubleValue] target:self selector:@selector(tick:) userInfo:nil repeats:YES];
         
         // Start the timer to hide the counter on the up beats
-//        [NSTimer scheduledTimerWithTimeInterval:30.0/[self.current.tempo doubleValue] target:self selector:@selector(tock:) userInfo:nil repeats:NO];
         [UIView animateWithDuration:0.8*(60.0/[self.current.tempo doubleValue]) animations:^{
             display.alpha = 0.0;
         }];
