@@ -11,19 +11,7 @@
 
 #define   DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees)/ 180)
 
-CALayer* makeLayer(CGRect frame) {
-    CGFloat comps[] = {0.5, 1.0};
-    
-    CALayer *layer = [[CALayer alloc] init];
-    layer.frame = frame;
-    layer.opaque = YES;
-    layer.cornerRadius = frame.size.height / 2;
-    layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceGray(), comps);
-    layer.opacity = 0.0;
-//    layer.anchorPoint = CGPointMake(0.0, 0.0);
-    return layer;
-    
-}
+CALayer* makeLayer(CGRect frame);
 
 @implementation MetronomeView
 
@@ -88,3 +76,16 @@ CALayer* makeLayer(CGRect frame) {
     }
 }
 @end
+
+CALayer* makeLayer(CGRect frame) {
+    CGFloat comps[] = {0.5, 1.0};
+    
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = frame;
+    layer.opaque = YES;
+    layer.cornerRadius = 1.619*frame.size.height;
+    layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceGray(), comps);
+    layer.opacity = 0.0;
+    return layer;
+    
+}
