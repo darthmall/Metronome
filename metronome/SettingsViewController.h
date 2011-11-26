@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Settings.h"
+#import "MeterViewController.h"
 
 @protocol SettingsViewControllerDelegate;
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController <MeterViewControllerDelegate>
 
 @property (weak, nonatomic) id <SettingsViewControllerDelegate> delegate;
 @property (weak, nonatomic) Settings *current;
-@property (weak, nonatomic) IBOutlet UITextField *tempoInput;
-@property (weak, nonatomic) IBOutlet UITextField *meterInput;
+@property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *meterLabel;
 
 - (IBAction)done:(id)sender;
 

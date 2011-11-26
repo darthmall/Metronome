@@ -11,7 +11,7 @@
 
 
 @implementation SettingsViewController
-@synthesize tempoInput, meterInput, delegate, current;
+@synthesize tempoLabel, meterLabel, delegate, current;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,17 +37,18 @@
     [super viewDidLoad];
     
     // Initialize the input fields with the current settings.
-    self.tempoInput.text = [current.tempo stringValue];
-    self.meterInput.text = [current.meter stringValue];
+    self.tempoLabel.text = [current.tempo stringValue];
+    self.meterLabel.text = [current.meter stringValue];
 }
 
 - (void)viewDidUnload
 {
-    [self setMeterInput:nil];
-    [self setTempoInput:nil];
+    self.meterLabel = nil;
+    self.tempoLabel = nil;
+    self.delegate = nil;
+    self.current = nil;
+    
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,10 +79,30 @@
 
 - (IBAction)done:(id)sender {
     // Notify the delegate of the changed settings.
-    self.current.tempo = [NSNumber numberWithInt:[self.tempoInput.text intValue]];
-    self.current.meter = [NSNumber numberWithInt:[self.meterInput.text intValue]];
+    self.current.tempo = [NSNumber numberWithInt:[self.tempoLabel.text intValue]];
+    self.current.meter = [NSNumber numberWithInt:[self.meterLabel.text intValue]];
     
     [self.delegate settingsViewController:self didChangeSettings:self.current];
+}
+
+# pragma mark - Storyboard methods
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SetMeter"]) {
+        MeterViewController *meterViewController = segue.destinationViewController;
+        
+        meterViewController.delegate = self;
+        meterViewController.meter = self.current.meter;
+    }
+}
+
+# pragma mark - MeterViewControllerDelegate
+
+- (void) meterViewController:(MeterViewController *)controller didSelectMeter:(NSInteger)meter {
+    self.current.meter = [NSNumber numberWithInteger:meter];
+    self.meterLabel.text = [self.current.meter stringValue];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
