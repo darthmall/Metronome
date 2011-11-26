@@ -83,7 +83,7 @@ CALayer* makeLayer(CGRect frame) {
     CALayer *layer = [[CALayer alloc] init];
     layer.frame = frame;
     layer.opaque = YES;
-    layer.cornerRadius = 1.619*frame.size.height;
+    layer.cornerRadius = frame.size.height / 2;
     layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceGray(), comps);
     layer.opacity = 0.0;
     return layer;
