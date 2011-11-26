@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "MetronomeController.h"
+#import "BpmController.h"
 
 
 @implementation SettingsViewController
@@ -93,6 +94,11 @@
         
         meterViewController.delegate = self;
         meterViewController.meter = self.current.meter;
+    } else if ([segue.identifier isEqualToString:@"SetBpm"]) {
+        BpmController *bpmViewController = segue.destinationViewController;
+        
+        bpmViewController.delegate = self;
+        bpmViewController.tempo = self.current.tempo;
     }
 }
 
@@ -103,6 +109,13 @@
     self.meterLabel.text = [self.current.meter stringValue];
 
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+# pragma mark - BpmViewControllerDelegate
+
+- (void) bpmController:(BpmController *)controller didChangeTempo:(NSNumber *)tempo {
+    self.current.tempo = tempo;
+    self.tempoLabel.text = [tempo stringValue];
 }
 
 @end

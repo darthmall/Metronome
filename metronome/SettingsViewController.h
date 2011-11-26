@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Settings.h"
 #import "MeterViewController.h"
+#import "BpmController.h"
 
 @protocol SettingsViewControllerDelegate;
 
-@interface SettingsViewController : UITableViewController <MeterViewControllerDelegate>
+@interface SettingsViewController : UITableViewController <MeterViewControllerDelegate, BpmControllerDelegate>
 
 @property (weak, nonatomic) id <SettingsViewControllerDelegate> delegate;
 @property (weak, nonatomic) Settings *current;

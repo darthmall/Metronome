@@ -178,7 +178,7 @@
         <scene sceneID="iLS-y5-o4q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiA-MO-HU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="NVa-RW-tbg" sceneMemberID="viewController">
+                <viewController id="NVa-RW-tbg" customClass="BpmController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2K3-BK-3DK">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -186,11 +186,18 @@
                             <pickerView contentMode="scaleToFill" id="Mwo-JF-tXD">
                                 <rect key="frame" x="0.0" y="100" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NVa-RW-tbg" id="GCv-Wl-dIh"/>
+                                    <outlet property="delegate" destination="NVa-RW-tbg" id="EaL-Ee-FXS"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZvQ-kx-DgP"/>
+                    <connections>
+                        <outlet property="bpmPicker" destination="Mwo-JF-tXD" id="Lvm-RC-FUr"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="434" y="126"/>
@@ -260,10 +267,15 @@
         </scene>
     </scenes>
     <classes>
+        <class className="BpmController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BpmController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bpmPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
         <class className="MeterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MeterViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:"/>
                 <relationship kind="outlet" name="meterLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

@@ -77,6 +77,8 @@ CALayer* makeLayer(CGRect frame);
 }
 @end
 
+# pragma mark - Helper functions
+
 CALayer* makeLayer(CGRect frame) {
     CGFloat comps[] = {0.5, 1.0};
     

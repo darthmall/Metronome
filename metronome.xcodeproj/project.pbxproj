@@ -20,6 +20,7 @@
 		7E657C46147B3141003C6876 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E657C44147B3141003C6876 /* MainStoryboard.storyboard */; };
 		7E657C49147B3141003C6876 /* MetronomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* MetronomeController.m */; };
 		7E97CD49147DEC1A00793B96 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E97CD48147DEC1A00793B96 /* Settings.m */; };
+		7EB6BF3D1481554A00C2067D /* BpmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6BF3C1481554A00C2067D /* BpmController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		7E657C48147B3141003C6876 /* MetronomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeController.m; sourceTree = "<group>"; };
 		7E97CD47147DEC1A00793B96 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		7E97CD48147DEC1A00793B96 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		7EB6BF3B1481554A00C2067D /* BpmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BpmController.h; path = ../BpmController.h; sourceTree = "<group>"; };
+		7EB6BF3C1481554A00C2067D /* BpmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BpmController.m; path = ../BpmController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +131,14 @@
 		7EB6BF351481375500C2067D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EB6BF3B1481554A00C2067D /* BpmController.h */,
+				7EB6BF3C1481554A00C2067D /* BpmController.m */,
 				7E24682214809522008D821E /* MeterViewController.h */,
 				7E24682314809522008D821E /* MeterViewController.m */,
-				7E23565D147C8A6500D002CE /* SettingsViewController.h */,
-				7E23565E147C8A6500D002CE /* SettingsViewController.m */,
 				7E657C47147B3141003C6876 /* MetronomeController.h */,
 				7E657C48147B3141003C6876 /* MetronomeController.m */,
+				7E23565D147C8A6500D002CE /* SettingsViewController.h */,
+				7E23565E147C8A6500D002CE /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			path = metronome;
@@ -219,6 +224,7 @@
 				7E97CD49147DEC1A00793B96 /* Settings.m in Sources */,
 				7E16ED05147EB4F200738259 /* MetronomeView.m in Sources */,
 				7E24682414809522008D821E /* MeterViewController.m in Sources */,
+				7EB6BF3D1481554A00C2067D /* BpmController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
