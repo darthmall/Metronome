@@ -15,12 +15,10 @@
 
 @interface SettingsViewController : UITableViewController <MeterViewControllerDelegate, BpmControllerDelegate>
 
-@property (weak, nonatomic) id <SettingsViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<SettingsViewControllerDelegate> delegate;
 @property (weak, nonatomic) Settings *current;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *meterLabel;
-
-- (IBAction)done:(id)sender;
 
 @end
 

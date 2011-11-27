@@ -7,29 +7,13 @@
 //
 
 #import "SettingsViewController.h"
-#import "MetronomeController.h"
+#import "MetronomeViewController.h"
 #import "BpmController.h"
 
 
 @implementation SettingsViewController
-@synthesize tempoLabel, meterLabel, delegate, current;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+@synthesize tempoLabel, meterLabel, current, delegate;
 
 #pragma mark - View lifecycle
 
@@ -46,46 +30,24 @@
 {
     self.meterLabel = nil;
     self.tempoLabel = nil;
-    self.delegate = nil;
     self.current = nil;
     
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)done:(id)sender {
-    // Notify the delegate of the changed settings.
-    self.current.tempo = [NSNumber numberWithInt:[self.tempoLabel.text intValue]];
-    self.current.meter = [NSNumber numberWithInt:[self.meterLabel.text intValue]];
-    
-    [self.delegate settingsViewController:self didChangeSettings:self.current];
-}
+#pragma mark - Properties
 
+- (void)setCurrent:(Settings *)cur {
+    current = cur;
+    
+    self.tempoLabel.text = [cur.tempo stringValue];
+    self.meterLabel.text = [cur.meter stringValue];
+}
 # pragma mark - Storyboard methods
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -109,6 +71,7 @@
     self.meterLabel.text = [self.current.meter stringValue];
 
     [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate settingsViewController:self didChangeSettings:current];
 }
 
 # pragma mark - BpmViewControllerDelegate
@@ -116,6 +79,7 @@
 - (void) bpmController:(BpmController *)controller didChangeTempo:(NSNumber *)tempo {
     self.current.tempo = tempo;
     self.tempoLabel.text = [tempo stringValue];
+    [self.delegate settingsViewController:self didChangeSettings:current];
 }
 
 @end
