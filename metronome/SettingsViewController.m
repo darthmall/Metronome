@@ -112,12 +112,14 @@
     switch ([indexPath indexAtPosition:indexPath.length - 1]) {
         case 0:
             bpm = [[BpmController alloc] initWithNibName:@"TempoView" bundle:nil];
+            bpm.tempo = current.tempo;
             bpm.delegate = self;
             controller = bpm;
             break;
             
         case 1:
             meter = [[MeterViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            meter.meter = current.meter;
             meter.delegate = self;
             controller = meter;
             break;
