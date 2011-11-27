@@ -11,7 +11,7 @@
 #import "MetronomeViewController.h"
 #import "SettingsViewController.h"
 
-@interface RootViewController : UIViewController <UIScrollViewDelegate>
+@interface RootViewController : UIViewController <UIScrollViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) MetronomeViewController *metronome;

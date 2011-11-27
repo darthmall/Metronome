@@ -128,7 +128,9 @@
             break;
     }
 
-    [self.navigationController pushViewController:controller animated:YES];
+    if (controller) {
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 @end

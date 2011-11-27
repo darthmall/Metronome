@@ -47,6 +47,7 @@
     [settings.view setFrame:navController.view.frame];
     settings.current = metronome.current;
     settings.settingsDelegate = metronome;
+    navController.delegate = self;
     [navController pushViewController:settings animated:NO];
 
     [self.scrollView addSubview:navController.view];
@@ -73,10 +74,16 @@
     [self.metronome stop:nil];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if(self.scrollView.contentOffset.y > 100) {
-        [navController popToRootViewControllerAnimated:NO];
+#pragma mark - Navigation Controller Delegate
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    CGSize size = self.view.bounds.size;
+    
+    if ([viewController isEqual:settings]) {
+        size.height *= 2;
     }
+    self.scrollView.contentSize = size;
 }
 
 @end
