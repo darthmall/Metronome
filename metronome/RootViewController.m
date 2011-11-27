@@ -10,7 +10,7 @@
 
 @implementation RootViewController
 
-@synthesize scrollView, metronome, settings;
+@synthesize scrollView, metronome, settings, navController;
 
 #pragma mark - View lifecycle
 
@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect rect = self.view.bounds;
+//    rect.origin.y -= 20;
 
     self.wantsFullScreenLayout = YES;
 
@@ -27,6 +28,7 @@
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.delegate = self;
     
     // Set up the metronome view
     metronome = [[MetronomeViewController alloc] initWithNibName:@"MetronomeView" bundle:nil];
@@ -37,15 +39,17 @@
     
     [self.scrollView addSubview:metronome.view];
     
-    // Set up the settings view
-    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"Settings" bundle:nil];
-    UINavigationController *navigationController = [settingsStoryboard instantiateInitialViewController];
-    SettingsViewController *settingsView = (SettingsViewController *) navigationController.topViewController;
-    settingsView.view.frame = rect;
-    settingsView.current = metronome.current;
+    self.navController = [[UINavigationController alloc] init];
+    [navController.view setFrame:CGRectMake(0.0, 0.0, rect.size.width, rect.size.height)];
     
-    self.settings = settingsView;
-    [self.scrollView addSubview:settingsView.view];
+    // Set up the settings view
+    settings = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [settings.view setFrame:navController.view.frame];
+    settings.current = metronome.current;
+    settings.settingsDelegate = metronome;
+    [navController pushViewController:settings animated:NO];
+
+    [self.scrollView addSubview:navController.view];
 
     [self.view addSubview:scrollView];
 }
@@ -67,6 +71,12 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.metronome stop:nil];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if(self.scrollView.contentOffset.y > 100) {
+        [navController popToRootViewControllerAnimated:NO];
+    }
 }
 
 @end

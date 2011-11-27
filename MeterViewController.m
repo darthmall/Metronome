@@ -9,37 +9,20 @@
 #import "MeterViewController.h"
 
 @implementation MeterViewController
-@synthesize meterLabel, delegate, meter;
+@synthesize delegate = _delegate;
+@synthesize meter = _meter;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 #pragma mark - View lifecycle
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
-
 - (void)viewDidUnload
 {
-    self.meterLabel = nil;
     self.meter = nil;
 
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -58,11 +41,16 @@
     static NSString *CellIdentifier = @"MeterCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
     NSInteger row = [indexPath indexAtPosition:indexPath.length - 1];
     cell.textLabel.text = [NSString stringWithFormat:@"%d", row + 1];
 
     // Set the selection on the cell if it's the current meter value
-    if (row == [meter integerValue] - 1) {
+    if (row == _meter.integerValue - 1) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 

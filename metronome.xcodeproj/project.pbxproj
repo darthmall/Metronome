@@ -17,14 +17,11 @@
 		7E657C3D147B3141003C6876 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E657C3B147B3141003C6876 /* InfoPlist.strings */; };
 		7E657C3F147B3141003C6876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C3E147B3141003C6876 /* main.m */; };
 		7E657C43147B3141003C6876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C42147B3141003C6876 /* AppDelegate.m */; };
-		7E657C46147B3141003C6876 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E657C44147B3141003C6876 /* Settings.storyboard */; };
 		7E657C49147B3141003C6876 /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* MetronomeViewController.m */; };
 		7E8339BC14819C3C0014F98C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8339BB14819C3C0014F98C /* RootViewController.m */; };
 		7E97CD49147DEC1A00793B96 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E97CD48147DEC1A00793B96 /* Settings.m */; };
 		7EB6BF3D1481554A00C2067D /* BpmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB6BF3C1481554A00C2067D /* BpmController.m */; };
-		7EF892B41481EFFE0097F30B /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF892B31481EFFE0097F30B /* SettingsView.xib */; };
 		7EF892B61481F0300097F30B /* TempoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF892B51481F0300097F30B /* TempoView.xib */; };
-		7EF892B81481F0420097F30B /* MeterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF892B71481F0420097F30B /* MeterView.xib */; };
 		7EFB0B761481951F003B47A3 /* MetronomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EFB0B751481951F003B47A3 /* MetronomeView.xib */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +43,6 @@
 		7E657C40147B3141003C6876 /* metronome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "metronome-Prefix.pch"; sourceTree = "<group>"; };
 		7E657C41147B3141003C6876 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E657C42147B3141003C6876 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7E657C45147B3141003C6876 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		7E657C47147B3141003C6876 /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MetronomeViewController.h; path = metronome/MetronomeViewController.h; sourceTree = "<group>"; };
 		7E657C48147B3141003C6876 /* MetronomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MetronomeViewController.m; path = metronome/MetronomeViewController.m; sourceTree = "<group>"; };
 		7E8339BA14819C3C0014F98C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -55,9 +51,7 @@
 		7E97CD48147DEC1A00793B96 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		7EB6BF3B1481554A00C2067D /* BpmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BpmController.h; path = ../BpmController.h; sourceTree = "<group>"; };
 		7EB6BF3C1481554A00C2067D /* BpmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BpmController.m; path = ../BpmController.m; sourceTree = "<group>"; };
-		7EF892B31481EFFE0097F30B /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = ../SettingsView.xib; sourceTree = "<group>"; };
 		7EF892B51481F0300097F30B /* TempoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TempoView.xib; sourceTree = "<group>"; };
-		7EF892B71481F0420097F30B /* MeterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeterView.xib; sourceTree = "<group>"; };
 		7EFB0B751481951F003B47A3 /* MetronomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MetronomeView.xib; path = ../MetronomeView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +75,7 @@
 			children = (
 				7EFB0B6814817AD7003B47A3 /* Metronome */,
 				7E97CD4A147DEC1E00793B96 /* Model */,
-				7EB6BF361481376A00C2067D /* Resources */,
+				7EB6BF361481376A00C2067D /* Nibs */,
 				7EB6BF351481375500C2067D /* Settings */,
 				7E657C38147B3141003C6876 /* Application */,
 				7E657C39147B3141003C6876 /* Supporting Files */,
@@ -156,16 +150,13 @@
 			path = metronome;
 			sourceTree = "<group>";
 		};
-		7EB6BF361481376A00C2067D /* Resources */ = {
+		7EB6BF361481376A00C2067D /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				7EF892B31481EFFE0097F30B /* SettingsView.xib */,
 				7EFB0B751481951F003B47A3 /* MetronomeView.xib */,
-				7E657C44147B3141003C6876 /* Settings.storyboard */,
 				7EF892B51481F0300097F30B /* TempoView.xib */,
-				7EF892B71481F0420097F30B /* MeterView.xib */,
 			);
-			name = Resources;
+			name = Nibs;
 			path = metronome;
 			sourceTree = "<group>";
 		};
@@ -239,11 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E657C3D147B3141003C6876 /* InfoPlist.strings in Resources */,
-				7E657C46147B3141003C6876 /* Settings.storyboard in Resources */,
 				7EFB0B761481951F003B47A3 /* MetronomeView.xib in Resources */,
-				7EF892B41481EFFE0097F30B /* SettingsView.xib in Resources */,
 				7EF892B61481F0300097F30B /* TempoView.xib in Resources */,
-				7EF892B81481F0420097F30B /* MeterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,14 +263,6 @@
 				7E657C3C147B3141003C6876 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		7E657C44147B3141003C6876 /* Settings.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E657C45147B3141003C6876 /* en */,
-			);
-			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

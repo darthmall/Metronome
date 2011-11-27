@@ -16,5 +16,6 @@
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) MetronomeViewController *metronome;
 @property (strong, nonatomic) SettingsViewController *settings;
+@property (strong, nonatomic) UINavigationController *navController;
 
 @end

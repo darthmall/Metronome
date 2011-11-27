@@ -12,7 +12,7 @@
 #import "Settings.h"
 #import "MetronomeBeatView.h"
 
-@interface MetronomeViewController : UIViewController <UIScrollViewDelegate> {
+@interface MetronomeViewController : UIViewController <UIScrollViewDelegate, SettingsViewControllerDelegate> {
     UILongPressGestureRecognizer *longPressGesture;
     MetronomeBeatView *display;
 }

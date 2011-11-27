@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) NSNumber *meter;
 @property (weak, nonatomic) id <MeterViewControllerDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UILabel *meterLabel;
 
 @end
 
