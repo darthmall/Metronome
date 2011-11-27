@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect rect = self.view.bounds;
-//    rect.origin.y -= 20;
 
     self.wantsFullScreenLayout = YES;
 
@@ -47,11 +46,11 @@
     [settings.view setFrame:navController.view.frame];
     settings.current = metronome.current;
     settings.settingsDelegate = metronome;
+
     navController.delegate = self;
     [navController pushViewController:settings animated:NO];
 
     [self.scrollView addSubview:navController.view];
-
     [self.view addSubview:scrollView];
 }
 
@@ -80,9 +79,11 @@
     
     CGSize size = self.view.bounds.size;
     
+    // Set the content size of the scroll view to allow for scrolling between the metronome and settings only when the settings view is displayed by the navigation controller. Otherwise we're drilled down in the settings and should set the content height to match the view bounds so that users can't scroll until they go back to the root settings view.
     if ([viewController isEqual:settings]) {
         size.height *= 2;
     }
+
     self.scrollView.contentSize = size;
 }
 
