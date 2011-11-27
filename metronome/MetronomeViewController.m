@@ -88,7 +88,7 @@
         display.hidden = NO;
                 
         // Start the repeating timer that counts the beats.
-        timer = [NSTimer scheduledTimerWithTimeInterval:interval target:display selector:@selector(tick:) userInfo:[NSNumber numberWithDouble:interval * ([self.current.meter doubleValue] - 1.0)] repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:interval target:display selector:@selector(tick:) userInfo:[NSNumber numberWithDouble:interval * ([self.current.meter doubleValue] / 2)] repeats:YES];
     }
 }
 

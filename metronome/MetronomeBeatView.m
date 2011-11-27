@@ -21,7 +21,6 @@ CALayer* makeLayer(CGRect frame);
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.opaque = NO;
         count = 0;
     }
     
@@ -51,13 +50,18 @@ CALayer* makeLayer(CGRect frame);
 }
 
 - (void)tick:(NSTimer *)timer {
+    
     CALayer *layer = [ticks objectAtIndex:count];
-    layer.opacity = 1.0;
+
+    [layer removeAllAnimations];
     
     CABasicAnimation *hide = [CABasicAnimation animationWithKeyPath:@"opacity"];
     hide.duration = [timer.userInfo doubleValue];
     hide.fromValue = [NSNumber numberWithFloat:1.0];
     hide.toValue = [NSNumber numberWithFloat:0.0];
+    hide.removedOnCompletion = YES;
+    hide.autoreverses = NO;
+    hide.repeatCount = 0;
     [layer addAnimation:hide forKey:@"animateOpacity"];
     
     count++;
