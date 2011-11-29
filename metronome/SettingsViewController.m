@@ -33,9 +33,16 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewDidLoad {
+    tempoLabel.text = _tempo.stringValue;
+    tempoSlider.value = _tempo.floatValue;
+}
+
 - (void)viewDidUnload
 {
     settingsDelegate = nil;
+    _tempo = nil;
+    _meter = nil;
 
     [self setMeterLabel:nil];
     [self setTempoLabel:nil];
