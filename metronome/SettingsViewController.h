@@ -7,21 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Settings.h"
-#import "MeterViewController.h"
-#import "BpmController.h"
 
 @protocol SettingsViewControllerDelegate;
 
-@interface SettingsViewController : UITableViewController <MeterViewControllerDelegate, BpmControllerDelegate>
+@interface SettingsViewController : UIViewController
+
+@property (strong, nonatomic) NSNumber *meter;
+@property (strong, nonatomic) NSNumber *tempo;
 
 @property (weak, nonatomic) id<SettingsViewControllerDelegate> settingsDelegate;
-@property (weak, nonatomic) Settings *current;
+
+@property (weak, nonatomic) IBOutlet UILabel *meterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
+@property (weak, nonatomic) IBOutlet UISlider *meterSlider;
+@property (weak, nonatomic) IBOutlet UISlider *tempoSlider;
+
+- (IBAction)onMeterSliderChange:(id)sender;
+- (IBAction)onTempoSliderChange:(id)sender;
+
+- (IBAction)onSliderTouchDown:(id)sender;
+- (IBAction)onSliderTouchUp:(id)sender;
 
 @end
 
 @protocol SettingsViewControllerDelegate <NSObject>
 
-- (void)settingsViewController:(SettingsViewController *)controller didChangeSettings:(Settings *)settings;
+- (void)meterDidChange:(NSNumber *)meter;
+- (void)tempoDidChange:(NSNumber *)tempo;
 
 @end

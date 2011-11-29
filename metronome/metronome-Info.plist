@@ -8,6 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>MetronomeDefaultMeter</key>
+	<integer>4</integer>
+	<key>MetronomeDefaultTempo</key>
+	<integer>120</integer>
 	<key>CFBundleIconFiles</key>
 	<array/>
 	<key>CFBundleIdentifier</key>

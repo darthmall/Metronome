@@ -11,11 +11,10 @@
 #import "MetronomeViewController.h"
 #import "SettingsViewController.h"
 
-@interface RootViewController : UIViewController <UIScrollViewDelegate, UINavigationControllerDelegate>
+@interface RootViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) MetronomeViewController *metronome;
 @property (strong, nonatomic) SettingsViewController *settings;
-@property (strong, nonatomic) UINavigationController *navController;
 
 @end

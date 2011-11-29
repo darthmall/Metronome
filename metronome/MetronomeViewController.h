@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "SettingsViewController.h"
-#import "Settings.h"
 #import "MetronomeBeatView.h"
 
 @interface MetronomeViewController : UIViewController <UIScrollViewDelegate, SettingsViewControllerDelegate> {
@@ -18,7 +17,8 @@
 }
 
 @property (assign) NSTimer *timer;
-@property (strong, nonatomic) Settings *current;
+@property (strong, nonatomic) NSNumber *meter;
+@property (strong, nonatomic) NSNumber *tempo;
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UILabel *meterLabel;

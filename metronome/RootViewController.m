@@ -10,7 +10,7 @@
 
 @implementation RootViewController
 
-@synthesize scrollView, metronome, settings, navController;
+@synthesize scrollView, metronome, settings;
 
 #pragma mark - View lifecycle
 
@@ -28,29 +28,29 @@
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.delegate = self;
-    
+
+    // FIXME: Load from plist
+    NSNumber *defaultMeter = [NSNumber numberWithInt:4];
+    NSNumber *defaultTempo = [NSNumber numberWithInt:120];
+
     // Set up the metronome view
     metronome = [[MetronomeViewController alloc] initWithNibName:@"MetronomeView" bundle:nil];
     metronome.view.frame = CGRectMake(0.0, rect.size.height, rect.size.width, rect.size.height);
+    metronome.meter = defaultMeter;
+    metronome.tempo = defaultTempo;
     
-    [scrollView scrollRectToVisible:metronome.view.frame
-                           animated:NO];
+    [scrollView scrollRectToVisible:metronome.view.frame animated:NO];
     
     [self.scrollView addSubview:metronome.view];
     
-    self.navController = [[UINavigationController alloc] init];
-    [navController.view setFrame:CGRectMake(0.0, 0.0, rect.size.width, rect.size.height)];
-    
     // Set up the settings view
-    settings = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    [settings.view setFrame:navController.view.frame];
-    settings.current = metronome.current;
+    settings = [[SettingsViewController alloc] initWithNibName:@"SettingsView" bundle:nil];
+    settings.meter = defaultMeter;
+    settings.tempo = defaultTempo;
     settings.settingsDelegate = metronome;
+    
+    [scrollView addSubview:settings.view];
 
-    navController.delegate = self;
-    [navController pushViewController:settings animated:NO];
-
-    [self.scrollView addSubview:navController.view];
     [self.view addSubview:scrollView];
 }
 

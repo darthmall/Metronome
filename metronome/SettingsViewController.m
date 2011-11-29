@@ -8,27 +8,39 @@
 
 #import "SettingsViewController.h"
 #import "MetronomeViewController.h"
-#import "BpmController.h"
 
 @implementation SettingsViewController
 
-@synthesize current, settingsDelegate;
+@synthesize settingsDelegate;
+@synthesize meterLabel;
+@synthesize tempoLabel;
+@synthesize meterSlider;
+@synthesize tempoSlider;
+@synthesize meter = _meter;
+@synthesize tempo = _tempo;
+
+- (void)setMeter:(NSNumber *)meter {
+    _meter = meter;
+    meterLabel.text = meter.stringValue;
+    meterSlider.value = meter.floatValue;
+}
+
+- (void)setTempo:(NSNumber *)tempo {
+    _tempo = tempo;
+    tempoLabel.text = tempo.stringValue;
+    tempoSlider.value = tempo.floatValue;
+}
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.title = @"Settings";
-    
-    [self.tableView setScrollEnabled:NO];
-}
-
 - (void)viewDidUnload
 {
-    self.current = nil;
-    
+    settingsDelegate = nil;
+
+    [self setMeterLabel:nil];
+    [self setTempoLabel:nil];
+    [self setMeterSlider:nil];
+    [self setTempoSlider:nil];
     [super viewDidUnload];
 }
 
@@ -37,100 +49,40 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-# pragma mark - MeterViewControllerDelegate
+#pragma mark - UISlider actions
 
-- (void) meterViewController:(MeterViewController *)controller didSelectMeter:(NSInteger)meter {
-    self.current.meter = [NSNumber numberWithInteger:meter];
-    
-    NSUInteger path[] = {0, 1};
-    NSArray *rows = [NSArray arrayWithObject:[NSIndexPath indexPathWithIndexes:path length:2]];
-
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.settingsDelegate settingsViewController:self didChangeSettings:current];
-
-    [self.tableView reloadRowsAtIndexPaths:rows withRowAnimation:YES];
+- (IBAction)onMeterSliderChange:(id)sender {
+    meterLabel.text = [NSString stringWithFormat:@"%d", (int) meterSlider.value];
+    [self.settingsDelegate meterDidChange:[NSNumber numberWithInt:(int) meterSlider.value]];
 }
 
-# pragma mark - BpmViewControllerDelegate
-
-- (void) bpmController:(BpmController *)controller didChangeTempo:(NSNumber *)tempo {
-    self.current.tempo = tempo;
-    
-    NSUInteger path[] = {0, 0};
-    NSArray *rows = [NSArray arrayWithObject:[NSIndexPath indexPathWithIndexes:path length:2]];
-
-    [self.settingsDelegate settingsViewController:self didChangeSettings:current];
-
-    [self.tableView reloadRowsAtIndexPaths:rows withRowAnimation:YES];
+- (IBAction)onTempoSliderChange:(id)sender {
+    tempoLabel.text = [NSString stringWithFormat:@"%d", (int) tempoSlider.value];
+    [self.settingsDelegate tempoDidChange:[NSNumber numberWithInt:(int) tempoSlider.value]];
 }
 
-#pragma mark - UITableViewDataSource
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"SettingsCell";
+- (IBAction)onSliderTouchDown:(id)sender {
+    UILabel *label;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    if ([sender isEqual:meterSlider]) {
+        label = meterLabel;
+    } else if ([sender isEqual:tempoSlider]) {
+        label = tempoLabel;
     }
     
-    switch ([indexPath indexAtPosition:indexPath.length - 1]) {
-        case 0:
-            cell.textLabel.text = [current.tempo stringValue];
-            cell.detailTextLabel.text = @"bpm";
-            break;
-            
-        case 1:
-            cell.textLabel.text = [current.meter stringValue];
-            cell.detailTextLabel.text = @"meter";
-            break;
-            
-        default:
-            break;
-    }
+    label.textColor = [UIColor darkGrayColor];
+}
+
+- (IBAction)onSliderTouchUp:(id)sender {
+    UILabel *label;
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *controller;
-    BpmController *bpm;
-    MeterViewController *meter;
-
-    switch ([indexPath indexAtPosition:indexPath.length - 1]) {
-        case 0:
-            bpm = [[BpmController alloc] initWithNibName:@"TempoView" bundle:nil];
-            bpm.tempo = current.tempo;
-            bpm.delegate = self;
-            controller = bpm;
-            break;
-            
-        case 1:
-            meter = [[MeterViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            meter.meter = current.meter;
-            meter.delegate = self;
-            controller = meter;
-            break;
-            
-        default:
-            break;
+    if ([sender isEqual:meterSlider]) {
+        label = meterLabel;
+    } else if ([sender isEqual:tempoSlider]) {
+        label = tempoLabel;
     }
-
-    if (controller) {
-        [self.navigationController pushViewController:controller animated:YES];
-    }
+                                
+    label.textColor = [UIColor lightGrayColor];
 }
 
 @end
