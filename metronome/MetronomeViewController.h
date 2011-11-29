@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "SettingsViewController.h"
 #import "MetronomeBeatView.h"
@@ -14,6 +15,8 @@
 @interface MetronomeViewController : UIViewController <UIScrollViewDelegate, SettingsViewControllerDelegate> {
     UILongPressGestureRecognizer *longPressGesture;
     MetronomeBeatView *display;
+    CFURLRef soundFileURLRef;
+    SystemSoundID soundFileObject;
 }
 
 @property (assign) NSTimer *timer;
@@ -26,5 +29,6 @@
 
 - (IBAction)start:(id)sender;
 - (void)stop:(id)senderOrNil;
+- (void)tick:(NSTimer *)timer;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation MetronomeViewController
 
-@synthesize timer;
+@synthesize timer=_timer;
 @synthesize meter=_meter;
 @synthesize tempo=_tempo;
 
@@ -36,7 +36,14 @@
 {
     [super viewDidLoad];
 
-
+    NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"tick" withExtension: @"aif"];
+    
+    // Store the URL as a CFURLRef instance
+    soundFileURLRef = (__bridge CFURLRef) tapSound;
+    
+    // Create a system sound object representing the sound file.
+    AudioServicesCreateSystemSoundID (soundFileURLRef, &soundFileObject);
+    
     // Initialize the display
     tempoLabel.text = [_tempo stringValue];
     meterLabel.text = [_meter stringValue];
@@ -73,12 +80,12 @@
 #pragma mark - Event handlers
 
 - (void)stop:(id)senderOrNil {
-    if (timer) {
+    if (_timer) {
         display.hidden = YES;
         button.hidden = NO;
         [display reset];
-        [timer invalidate];
-        timer = nil;
+        [_timer invalidate];
+        _timer = nil;
     }
 }
 
@@ -91,8 +98,15 @@
         display.hidden = NO;
                 
         // Start the repeating timer that counts the beats.
-        timer = [NSTimer scheduledTimerWithTimeInterval:interval target:display selector:@selector(tick:) userInfo:[NSNumber numberWithDouble:interval * ([_meter doubleValue] / 2)] repeats:YES];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(tick:) userInfo:[NSNumber numberWithDouble:interval * ([_meter doubleValue] / 2)] repeats:YES];
     }
+}
+
+#pragma mark - NSTimer actions
+
+- (void)tick:(NSTimer *)timer {
+    [display tick:(NSNumber *)timer.userInfo];
+    AudioServicesPlaySystemSound (soundFileObject);
 }
 
 #pragma mark - SettingsViewControllerDelegate

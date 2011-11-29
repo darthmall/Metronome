@@ -18,6 +18,8 @@
 		7E657C43147B3141003C6876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C42147B3141003C6876 /* AppDelegate.m */; };
 		7E657C49147B3141003C6876 /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* MetronomeViewController.m */; };
 		7E8339BC14819C3C0014F98C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8339BB14819C3C0014F98C /* RootViewController.m */; };
+		7ED10E211484AF260006EEE0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED10E201484AF250006EEE0 /* AudioToolbox.framework */; };
+		7ED10E261484B40C0006EEE0 /* tick.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7ED10E251484B40C0006EEE0 /* tick.aif */; };
 		7EF892B61481F0300097F30B /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF892B51481F0300097F30B /* SettingsView.xib */; };
 		7EFB0B761481951F003B47A3 /* MetronomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EFB0B751481951F003B47A3 /* MetronomeView.xib */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		7E657C48147B3141003C6876 /* MetronomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MetronomeViewController.m; path = metronome/MetronomeViewController.m; sourceTree = "<group>"; };
 		7E8339BA14819C3C0014F98C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		7E8339BB14819C3C0014F98C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		7ED10E201484AF250006EEE0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7ED10E251484B40C0006EEE0 /* tick.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = tick.aif; path = Resources/tick.aif; sourceTree = "<group>"; };
 		7EF892B51481F0300097F30B /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		7EFB0B751481951F003B47A3 /* MetronomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MetronomeView.xib; path = ../MetronomeView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED10E211484AF260006EEE0 /* AudioToolbox.framework in Frameworks */,
 				7E16ED08147EC3FC00738259 /* QuartzCore.framework in Frameworks */,
 				7E657C33147B3141003C6876 /* UIKit.framework in Frameworks */,
 				7E657C35147B3141003C6876 /* Foundation.framework in Frameworks */,
@@ -85,6 +90,7 @@
 		7E657C31147B3141003C6876 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7ED10E201484AF250006EEE0 /* AudioToolbox.framework */,
 				7E16ED07147EC3FC00738259 /* QuartzCore.framework */,
 				7E657C32147B3141003C6876 /* UIKit.framework */,
 				7E657C34147B3141003C6876 /* Foundation.framework */,
@@ -108,6 +114,7 @@
 		7E657C39147B3141003C6876 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7ED10E241484AFA80006EEE0 /* Sounds */,
 				7E657C3A147B3141003C6876 /* metronome-Info.plist */,
 				7E657C3B147B3141003C6876 /* InfoPlist.strings */,
 				7E657C3E147B3141003C6876 /* main.m */,
@@ -135,6 +142,15 @@
 			);
 			name = Nibs;
 			path = metronome;
+			sourceTree = "<group>";
+		};
+		7ED10E241484AFA80006EEE0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7ED10E251484B40C0006EEE0 /* tick.aif */,
+			);
+			name = Sounds;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		7EFB0B6814817AD7003B47A3 /* Metronome */ = {
@@ -209,6 +225,7 @@
 				7E657C3D147B3141003C6876 /* InfoPlist.strings in Resources */,
 				7EFB0B761481951F003B47A3 /* MetronomeView.xib in Resources */,
 				7EF892B61481F0300097F30B /* SettingsView.xib in Resources */,
+				7ED10E261484B40C0006EEE0 /* tick.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

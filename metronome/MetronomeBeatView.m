@@ -49,14 +49,14 @@ CALayer* makeLayer(CGRect frame);
     _beats = beats;
 }
 
-- (void)tick:(NSTimer *)timer {
+- (void)tick:(NSNumber *)duration {
     
     CALayer *layer = [ticks objectAtIndex:count];
 
     [layer removeAllAnimations];
     
     CABasicAnimation *hide = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    hide.duration = [timer.userInfo doubleValue];
+    hide.duration = duration.doubleValue;
     hide.fromValue = [NSNumber numberWithFloat:1.0];
     hide.toValue = [NSNumber numberWithFloat:0.0];
     hide.removedOnCompletion = YES;
