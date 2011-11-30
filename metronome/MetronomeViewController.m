@@ -3,7 +3,7 @@
 //  metronome
 //
 //  Created by Evan Sheehan on 11/21/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import "MetronomeViewController.h"
@@ -62,6 +62,7 @@
 }
 
 - (void)viewDidUnload {
+    // Clean up, aisle one!
     self.meter = nil;
     self.tempo = nil;
 
@@ -81,8 +82,11 @@
 
 - (void)stop:(id)senderOrNil {
     if (_timer) {
+        // Replace the metronome with the start button.
         display.hidden = YES;
         button.hidden = NO;
+        
+        // Rest and clean up
         [display reset];
         [_timer invalidate];
         _timer = nil;
@@ -91,9 +95,8 @@
 
 - (IBAction)start:(id)sender {
     if (!self.timer) {
+        // Calculate the timer interval based on the tempo in beats per minute
         double interval = 60.0 / [_tempo doubleValue];
-        // Initialize the timer and the visual bell.
-
         button.hidden = YES;
         display.hidden = NO;
                 
@@ -105,8 +108,9 @@
 #pragma mark - NSTimer actions
 
 - (void)tick:(NSTimer *)timer {
+    // Update the display. Oh yeah, and tick!
     [display tick:(NSNumber *)timer.userInfo];
-    AudioServicesPlaySystemSound (soundFileObject);
+    AudioServicesPlaySystemSound(soundFileObject);
 }
 
 #pragma mark - SettingsViewControllerDelegate

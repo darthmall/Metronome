@@ -3,7 +3,7 @@
 //  metronome
 //
 //  Created by Evan Sheehan on 11/24/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -28,9 +28,13 @@ CALayer* makeLayer(CGRect frame);
 }
 
 - (void)setBeats:(NSNumber *)beats {
+    // The width of the space between circles should be 1/3 the circle diameter, which should be calculated from the width of our frame.
     float gutter = self.frame.size.width / (3 * [beats floatValue] + 1);
+    
+    // Center the circles vertically within the frame.
     float y = self.frame.size.height / 2 - gutter;
 
+    // Circles are (cleverly) just rectangular CoreAnimation layers whose corner radius is half their height. Thanks to Christian Fernando Strømmen for this one.
     CALayer *tickArray[[beats intValue]];
     
     for (int i = 0; i < [ticks count]; i++) {
@@ -54,7 +58,8 @@ CALayer* makeLayer(CGRect frame);
     CALayer *layer = [ticks objectAtIndex:count];
 
     [layer removeAllAnimations];
-    
+
+    // Fade the dots out after they appear.
     CABasicAnimation *hide = [CABasicAnimation animationWithKeyPath:@"opacity"];
     hide.duration = duration.doubleValue;
     hide.fromValue = [NSNumber numberWithFloat:1.0];
@@ -64,6 +69,7 @@ CALayer* makeLayer(CGRect frame);
     hide.repeatCount = 0;
     [layer addAnimation:hide forKey:@"animateOpacity"];
     
+    // Counter management.
     count++;
     if (count >= [_beats intValue]) {
         count = 0;
@@ -73,6 +79,7 @@ CALayer* makeLayer(CGRect frame);
 - (void)reset {
     count = 0;
     
+    // Clear all the CoreAnimation layers from the view
     for (int i = 0; i < [ticks count]; i++) {
         CALayer *l = [ticks objectAtIndex:i];
         [l removeAllAnimations];
@@ -83,6 +90,7 @@ CALayer* makeLayer(CGRect frame);
 
 # pragma mark - Helper functions
 
+// Factory for CoreAnimation layers.
 CALayer* makeLayer(CGRect frame) {
     CGFloat comps[] = {0.5, 1.0};
     

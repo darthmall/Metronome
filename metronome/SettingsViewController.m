@@ -3,7 +3,7 @@
 //  metronome
 //
 //  Created by Evan Sheehan on 11/22/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import "SettingsViewController.h"
@@ -38,8 +38,7 @@
     tempoSlider.value = _tempo.floatValue;
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     settingsDelegate = nil;
     _tempo = nil;
     _meter = nil;
@@ -68,6 +67,7 @@
     [self.settingsDelegate tempoDidChange:[NSNumber numberWithInt:(int) tempoSlider.value]];
 }
 
+// Manage the displays above the sliders...
 - (IBAction)onSliderTouchDown:(id)sender {
     UILabel *label;
     

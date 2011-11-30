@@ -3,7 +3,7 @@
 //  metronome
 //
 //  Created by Evan Sheehan on 11/26/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -14,7 +14,6 @@
 
 #pragma mark - View lifecycle
 
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect rect = self.view.bounds;
@@ -29,7 +28,7 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.delegate = self;
 
-    // FIXME: Load from plist
+    // De! Fault! De! Fault!
     NSNumber *defaultMeter = [NSNumber numberWithInt:4];
     NSNumber *defaultTempo = [NSNumber numberWithInt:120];
 
@@ -70,6 +69,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    // Stop the metronome if we scroll.
     [self.metronome stop:nil];
 }
 

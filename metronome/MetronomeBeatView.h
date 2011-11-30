@@ -1,9 +1,10 @@
 //
 //  MetronomeView.h
-//  metronome
+//  
+// Custom UIView for visualizing the beats counted by the metronome.
 //
 //  Created by Evan Sheehan on 11/24/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

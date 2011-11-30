@@ -3,7 +3,7 @@
 //  metronome
 //
 //  Created by Evan Sheehan on 11/21/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Evan Sheehan. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -17,7 +17,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
 
     self.rootView = [[RootViewController alloc] init];
-//    self.window.rootViewController = self.rootView;
 
     [self.window addSubview:rootView.view];
     [self.window makeKeyAndVisible];
