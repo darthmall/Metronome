@@ -1,6 +1,7 @@
 //
 //  SettingsViewController.h
-//  metronome
+//
+//  View controller for the settings page. Uses the SettingsViewControllerDelegate to pass new settings to the MetronomeViewController.
 //
 //  Created by Evan Sheehan on 11/22/11.
 //  Copyright (c) 2011 Evan Sheehan. All rights reserved.

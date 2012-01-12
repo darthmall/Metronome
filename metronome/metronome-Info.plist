@@ -8,12 +8,24 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>MetronomeDefaultMeter</key>
-	<integer>4</integer>
-	<key>MetronomeDefaultTempo</key>
-	<integer>120</integer>
 	<key>CFBundleIconFiles</key>
-	<array/>
+	<array>
+		<string>metronome-logo-114.png</string>
+		<string>metronome-logo-57.png</string>
+	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>metronome-logo-114.png</string>
+				<string>metronome-logo-57.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>darthmall.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -30,6 +42,10 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MetronomeDefaultMeter</key>
+	<integer>4</integer>
+	<key>MetronomeDefaultTempo</key>
+	<integer>120</integer>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

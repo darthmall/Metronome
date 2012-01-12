@@ -17,6 +17,8 @@
 		7E657C3F147B3141003C6876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C3E147B3141003C6876 /* main.m */; };
 		7E657C43147B3141003C6876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C42147B3141003C6876 /* AppDelegate.m */; };
 		7E657C49147B3141003C6876 /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E657C48147B3141003C6876 /* MetronomeViewController.m */; };
+		7E66452A14871AE900E23538 /* metronome-logo-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E66452814871AE900E23538 /* metronome-logo-114.png */; };
+		7E66452D14871B3B00E23538 /* metronome-logo-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E66452C14871B3B00E23538 /* metronome-logo-57.png */; };
 		7E8339BC14819C3C0014F98C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8339BB14819C3C0014F98C /* RootViewController.m */; };
 		7ED10E211484AF260006EEE0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED10E201484AF250006EEE0 /* AudioToolbox.framework */; };
 		7ED10E261484B40C0006EEE0 /* tick.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7ED10E251484B40C0006EEE0 /* tick.aif */; };
@@ -42,6 +44,8 @@
 		7E657C42147B3141003C6876 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7E657C47147B3141003C6876 /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MetronomeViewController.h; path = metronome/MetronomeViewController.h; sourceTree = "<group>"; };
 		7E657C48147B3141003C6876 /* MetronomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MetronomeViewController.m; path = metronome/MetronomeViewController.m; sourceTree = "<group>"; };
+		7E66452814871AE900E23538 /* metronome-logo-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metronome-logo-114.png"; sourceTree = SOURCE_ROOT; };
+		7E66452C14871B3B00E23538 /* metronome-logo-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metronome-logo-57.png"; sourceTree = SOURCE_ROOT; };
 		7E8339BA14819C3C0014F98C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		7E8339BB14819C3C0014F98C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		7ED10E201484AF250006EEE0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -114,6 +118,8 @@
 		7E657C39147B3141003C6876 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E66452814871AE900E23538 /* metronome-logo-114.png */,
+				7E66452C14871B3B00E23538 /* metronome-logo-57.png */,
 				7ED10E241484AFA80006EEE0 /* Sounds */,
 				7E657C3A147B3141003C6876 /* metronome-Info.plist */,
 				7E657C3B147B3141003C6876 /* InfoPlist.strings */,
@@ -226,6 +232,8 @@
 				7EFB0B761481951F003B47A3 /* MetronomeView.xib in Resources */,
 				7EF892B61481F0300097F30B /* SettingsView.xib in Resources */,
 				7ED10E261484B40C0006EEE0 /* tick.aif in Resources */,
+				7E66452A14871AE900E23538 /* metronome-logo-114.png in Resources */,
+				7E66452D14871B3B00E23538 /* metronome-logo-57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

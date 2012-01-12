@@ -1,6 +1,7 @@
 //
 //  ViewController.h
-//  metronome
+//  
+//  View controller that manages the metronome. Handles starting and stopping as well as updating the visual display and playing the audio.
 //
 //  Created by Evan Sheehan on 11/21/11.
 //  Copyright (c) 2011 Evan Sheehan. All rights reserved.
